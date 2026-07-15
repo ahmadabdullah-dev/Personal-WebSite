@@ -16,6 +16,7 @@
     "@mui/material": "^9.2.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
+    "react-router": "^8.2.0",
     "rollup-plugin-visualizer": "^7.0.1",
     "vite-plugin-mkcert": "^2.1.0"
   },
