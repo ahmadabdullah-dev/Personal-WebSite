@@ -2,7 +2,6 @@
 
 namespace API.DTOs;
 
-public record SlugDTO(string slug);
 public record ProjectDTO
 {
     public string Slug { get; set; } = string.Empty;

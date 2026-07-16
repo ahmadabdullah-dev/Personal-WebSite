@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
 
@@ -13,9 +14,9 @@ public class ProjectsController: ControllerBase
         _projectService = projectService;
     }
     [HttpGet("slug")]
-    public async Task<IActionResult> GetBySlug([FromQuery] SlugDTO dto)
+    public async Task<IActionResult> GetBySlug([FromQuery] string slug)
     {
-        var result = await _projectService.GetBySlugAsync(dto.slug);
+        var result = await _projectService.GetBySlugAsync(slug);
         return result.IsSuccess ? Ok(result) : NotFound(result);
     }
 
@@ -25,20 +26,21 @@ public class ProjectsController: ControllerBase
         var result = await _projectService.GetProjectsAsync(p);
         return result.IsSuccess ? Ok(result) : BadRequest(result);
     }
-
+    [Authorize]
     [HttpPost("create")]
     public async Task<IActionResult> Create([FromBody] CreateProjectDTO dto)
     {
         var result = await _projectService.CreateProjectAsync(dto);
         return result.IsSuccess ? Ok(result) : BadRequest(result);
     }
+    [Authorize]
     [HttpPut("{slug}")]
     public async Task<IActionResult> Update([FromRoute] string slug, [FromBody] UpdateProjectDTO dto)
     {
         var result = await _projectService.UpdateProjectAsync(slug, dto);
         return result.IsSuccess ? Ok(result) : BadRequest(result);
     }
-
+    [Authorize]
     [HttpDelete("{slug}")]
     public async Task<IActionResult> Delete([FromRoute] string slug)
     {
