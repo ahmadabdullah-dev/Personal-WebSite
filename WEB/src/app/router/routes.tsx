@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, Navigate } from "react-router";
 import App from "../App";
 import ErrorPage from "../../features/errors/ErrorPage";
 import NotFound from "../../features/errors/NotFound";
@@ -8,7 +8,9 @@ import About from "../../features/about/About";
 import Contact from "../../features/contact/Contact";
 import Certificates from "../../features/certificates/Certificates";
 import Resume from "../../features/resume/Resume";
-import LoginForm from "../../features/auth/RequestLoginForm";
+import RequestLoginForm from "../../features/auth/RequestLoginForm";
+import RequireAuth from "./RequireAuth";
+import AdminDashboard from "../../features/admin/AdminDashboard";
 
 export const routes = createBrowserRouter([
   {
@@ -16,13 +18,18 @@ export const routes = createBrowserRouter([
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
+      { index: true, element: <Navigate to="/" replace /> },
+      {
+        element: <RequireAuth />,
+        children: [{ path: "admin", element: <AdminDashboard /> }],
+      },
       { path: "about", element: <About /> },
       { path: "contact", element: <Contact /> },
       { path: "projects", element: <Projects /> },
       { path: "projects/:projectName", element: <Project /> },
       { path: "certificates", element: <Certificates /> },
-      {path: "resume", element: <Resume />},
-      {path: "login", element: <LoginForm/> }
+      { path: "resume", element: <Resume /> },
+      { path: "login", element: <RequestLoginForm /> },
     ],
   },
   { path: "*", element: <NotFound /> },
