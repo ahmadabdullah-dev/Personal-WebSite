@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
 
 namespace API.Controllers;
@@ -24,6 +25,14 @@ public class AuthController : ControllerBase
     public async Task<IActionResult> Login(LoginDTO dto)
     {
         var result = await _authService.LoginAsync(dto);
+
+        return result.IsSuccess ? Ok(result) : Unauthorized(result);
+    }
+    [Authorize]
+    [HttpPost("logout")]
+    public async Task<IActionResult> Logout()
+    {
+        var result = await _authService.LogoutAsync();
 
         return result.IsSuccess ? Ok(result) : Unauthorized(result);
     }
