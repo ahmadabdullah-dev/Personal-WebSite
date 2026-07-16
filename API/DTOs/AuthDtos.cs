@@ -1,9 +1,9 @@
-﻿namespace API.Dtos;
-public record RequestLoginDto(
+﻿namespace API.DTOs;
+public record RequestLoginDTO(
     string Email,
     string Password
 );
-public record LoginDto(
+public record LoginDTO(
     string Email,
     string Code,
     bool IsPersistence

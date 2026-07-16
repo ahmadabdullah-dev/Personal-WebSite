@@ -14,14 +14,14 @@ public class AuthController : ControllerBase
        _authService = authService;
     }
     [HttpPost("request-login")]
-    public async Task<IActionResult> RequestLogin(RequestLoginDto dto)
+    public async Task<IActionResult> RequestLogin(RequestLoginDTO dto)
     {
         var result = await _authService.RequestLoginAsync(dto);
 
         return result.IsSuccess ? Ok(result) : BadRequest(result);
     }
     [HttpPost("login")]
-    public async Task<IActionResult> Login(LoginDto dto)
+    public async Task<IActionResult> Login(LoginDTO dto)
     {
         var result = await _authService.LoginAsync(dto);
 

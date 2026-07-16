@@ -19,7 +19,7 @@ namespace API.Services
             _emailService  = emailService;
             _logger = logger;
         }
-        public async Task<Result<string>> RequestLoginAsync(RequestLoginDto dto)
+        public async Task<Result<string>> RequestLoginAsync(RequestLoginDTO dto)
         {
             var user = await _userManager.FindByEmailAsync(dto.Email);
 
@@ -48,7 +48,7 @@ namespace API.Services
             }
             return Result<string>.Success("Login Code sent successfully");
         }
-        public async Task<Result<string>> LoginAsync(LoginDto dto)
+        public async Task<Result<string>> LoginAsync(LoginDTO dto)
         {
             var user = await _userManager.FindByEmailAsync(dto.Email);
 

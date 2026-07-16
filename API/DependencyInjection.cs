@@ -62,11 +62,13 @@ public static class DependencyInjection
             opts.TokenLifespan = TimeSpan.FromMinutes(5);
         });
 
-        services.Configure<Configurations>(configuration.GetSection("EmailConfiguration"));
+        services.Configure<EmailConfiguration>(configuration.GetSection("EmailConfiguration"));
         services.Configure<AdminConfiguration>(configuration.GetSection("Seed:Admin"));
         
         services.AddScoped<AuthService>();
         services.AddScoped<EmailService>();
+        services.AddScoped<ProjectService>();
+        services.AddScoped<ProjectRepository>();
 
         services.AddDataProtection();
 

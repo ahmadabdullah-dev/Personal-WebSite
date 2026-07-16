@@ -1,6 +1,6 @@
 ﻿namespace API.Common;
 
-public sealed class Configurations
+public sealed class EmailConfiguration
 {
     public required string From { get; set; }
     public required string SmtpServer { get; set; }

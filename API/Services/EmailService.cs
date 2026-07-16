@@ -4,12 +4,12 @@ using Microsoft.Extensions.Options;
 using MimeKit;
 public class EmailService 
 {
-    private readonly Configurations _emailConfig;
+    private readonly EmailConfiguration _emailConfig;
     private readonly UserManager<AppUser> _userManager;
     private readonly ILogger<EmailService> _logger;
 
     public EmailService(
-        IOptions<Configurations> emailConfig,
+        IOptions<EmailConfiguration> emailConfig,
         UserManager<AppUser> userManager,
         ILogger<EmailService> logger)
     {
