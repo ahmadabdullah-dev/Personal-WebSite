@@ -8,6 +8,7 @@ import About from "../../features/about/About";
 import Contact from "../../features/contact/Contact";
 import Certificates from "../../features/certificates/Certificates";
 import Resume from "../../features/resume/Resume";
+import LoginForm from "../../features/auth/RequestLoginForm";
 
 export const routes = createBrowserRouter([
   {
@@ -20,7 +21,8 @@ export const routes = createBrowserRouter([
       { path: "projects", element: <Projects /> },
       { path: "projects/:projectName", element: <Project /> },
       { path: "certificates", element: <Certificates /> },
-      {path: "resume", element: <Resume />}
+      {path: "resume", element: <Resume />},
+      {path: "login", element: <LoginForm/> }
     ],
   },
   { path: "*", element: <NotFound /> },
