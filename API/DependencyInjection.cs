@@ -50,14 +50,23 @@ public static class DependencyInjection
             options.Lockout.AllowedForNewUsers = true;
             options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(3);
             options.Lockout.MaxFailedAccessAttempts = 10;
-
+           
             options.Password.RequireDigit = true;
             options.Password.RequiredLength = 6;
         })
         .AddEntityFrameworkStores<ApplicationDbContext>()
         .AddDefaultTokenProviders();
-      
-        services.Configure<EmailConfiguration>(configuration.GetSection("EmailConfiguration"));
+       
+        services.Configure<DataProtectionTokenProviderOptions>(opts =>
+        {
+            opts.TokenLifespan = TimeSpan.FromMinutes(5);
+        });
+
+        services.Configure<Configurations>(configuration.GetSection("EmailConfiguration"));
+        services.Configure<AdminConfiguration>(configuration.GetSection("Seed:Admin"));
+        
+        services.AddScoped<AuthService>();
+        services.AddScoped<EmailService>();
 
         services.AddDataProtection();
 
