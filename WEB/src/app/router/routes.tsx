@@ -8,9 +8,10 @@ import About from "../../features/about/About";
 import Contact from "../../features/contact/Contact";
 import Certificates from "../../features/certificates/Certificates";
 import Resume from "../../features/resume/Resume";
-import RequestLoginForm from "../../features/auth/RequestLoginForm";
+import RequestLoginForm from "../../features/admin/auth/RequestLoginForm";
 import RequireAuth from "./RequireAuth";
 import AdminDashboard from "../../features/admin/AdminDashboard";
+import CreateProject from "../../features/admin/projects/CreateProject";
 
 export const routes = createBrowserRouter([
   {
@@ -21,7 +22,10 @@ export const routes = createBrowserRouter([
       { index: true, element: <Navigate to="/" replace /> },
       {
         element: <RequireAuth />,
-        children: [{ path: "admin", element: <AdminDashboard /> }],
+        children: [
+          { path: "admin", element: <AdminDashboard /> },
+          { path: "admin/create-project", element: <CreateProject /> },
+        ],
       },
       { path: "about", element: <About /> },
       { path: "contact", element: <Contact /> },

@@ -8,7 +8,7 @@ public record ProjectDTO
     public string Name { get; set; } = string.Empty;
     public string ShortDescription { get; set; } = string.Empty;
     public string LongDescription { get; set; } = string.Empty;
-    public List<string> TechStack { get; set; } = new List<string>();
+    public string TechStack { get; set; } = string.Empty;
     public string GithubLink { get; set; } = string.Empty;
     public string LiveLink { get; set; } = string.Empty;
     public DateTime CreatedAt { get; set; }
@@ -30,7 +30,7 @@ public record CreateProjectDTO
     [MaxLength(1024)]
     public string LongDescription { get; set; } = string.Empty;
 
-    public List<string> TechStack { get; set; } = new List<string>();
+    public string TechStack { get; set; } = string.Empty;
 
     public string GithubLink { get; set; } = string.Empty;
 
@@ -51,7 +51,7 @@ public record UpdateProjectDTO
     [MaxLength(1024)]
     public string LongDescription { get; set; } = string.Empty;
 
-    public List<string> TechStack { get; set; } = new List<string>();
+    public string TechStack { get; set; } = string.Empty;
     
     public string GithubLink { get; set; } = string.Empty;
 

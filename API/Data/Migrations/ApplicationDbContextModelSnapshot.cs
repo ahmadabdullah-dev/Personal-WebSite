@@ -123,7 +123,7 @@ namespace API.Data.Migrations
                         .HasMaxLength(32)
                         .HasColumnType("nvarchar(32)");
 
-                    b.PrimitiveCollection<string>("TechStack")
+                    b.Property<string>("TechStack")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

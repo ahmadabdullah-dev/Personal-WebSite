@@ -1,16 +1,17 @@
 import { Navigate, Outlet, useLocation } from "react-router";
-import {useUser} from "../../lib/hooks/useUser";
+import { useUser } from "../../lib/hooks/useUser";
 
 export default function RequireAuth() {
-  
-  const {CurrentUser} = useUser();
+  const { currentUser } = useUser();
   const location = useLocation();
-  
-  if(CurrentUser.isLoading)
-     return <div>Loading...</div>;
-  
-  if (!CurrentUser.data?.value) 
-     return <Navigate to="/" state={{ from: location }} />;
+
+  if (currentUser.isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (currentUser.isError || !currentUser.data?.value) {
+    return <Navigate to="/" state={{ from: location }} replace />;
+  }
 
   return <Outlet />;
 }

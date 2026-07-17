@@ -1,4 +1,6 @@
-﻿namespace API.Services;
+﻿using System.Text.RegularExpressions;
+
+namespace API.Services;
 
 public class ProjectService
 {
@@ -57,6 +59,9 @@ public class ProjectService
 
     public async Task<Result<string>> CreateProjectAsync(CreateProjectDTO dto)
     {
+        if (string.IsNullOrWhiteSpace(dto.Slug) || !Regex.IsMatch(dto.Slug, @"^[a-z0-9]+(-[a-z0-9]+)*$"))
+            return Result<string>.Failure("Invalid slug format");
+        
         if (await _projectRepository.GetBySlugAsync(dto.Slug) != null)
             return Result<string>.Failure("Slug Already Exists");
         

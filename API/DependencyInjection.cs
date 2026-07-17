@@ -57,10 +57,7 @@ public static class DependencyInjection
         .AddEntityFrameworkStores<ApplicationDbContext>()
         .AddDefaultTokenProviders();
        
-        services.Configure<DataProtectionTokenProviderOptions>(opts =>
-        {
-            opts.TokenLifespan = TimeSpan.FromMinutes(5);
-        });
+      
 
         services.Configure<EmailConfiguration>(configuration.GetSection("EmailConfiguration"));
         services.Configure<AdminConfiguration>(configuration.GetSection("Seed:Admin"));

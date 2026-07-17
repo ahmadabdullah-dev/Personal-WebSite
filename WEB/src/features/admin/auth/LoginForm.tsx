@@ -1,6 +1,6 @@
-import { useAuth } from "../../lib/hooks/useAuth";
+import { useAuth } from "../../../lib/hooks/useAuth";
 import { useForm } from "react-hook-form";
-import type { LoginDTO } from "../../lib/types/auth";
+import type { LoginDTO } from "../../../lib/types/auth";
 import {
   Box,
   Stack,
@@ -67,9 +67,7 @@ export default function LoginForm({ email, isPersistence }: LoginFormProps) {
         )}
 
         {loginAsync.error && (
-          <Alert severity="error">
-            {loginAsync.error.message}
-          </Alert>
+          <Alert severity="error">{loginAsync.error.message}</Alert>
         )}
       </Stack>
     </Box>

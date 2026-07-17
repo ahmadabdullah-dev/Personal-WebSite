@@ -1,7 +1,9 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import agent from "../api/agent";
+import type { Result } from "../types/common";
 import type { LoginDTO, RequestLoginDTO } from "../types/auth";
 import { useNavigate } from "react-router";
+import type { UserDTO } from "../types/user";
 
 export const useAuth = () => {
   const queryClient = useQueryClient();
@@ -9,14 +11,17 @@ export const useAuth = () => {
 
   const requestLoginAsync = useMutation({
     mutationFn: async (creds: RequestLoginDTO) => {
-      const response = await agent.post("/auth/request-login", creds);
+      const response = await agent.post<Result<null>>(
+        "/auth/request-login",
+        creds,
+      );
       return response.data;
-    }, 
+    },
   });
 
   const loginAsync = useMutation({
     mutationFn: async (creds: LoginDTO) => {
-      const response = await agent.post("/auth/login", creds);
+      const response = await agent.post<Result<UserDTO>>("/auth/login", creds);
       return response.data;
     },
     onSuccess: async () => {
@@ -24,18 +29,20 @@ export const useAuth = () => {
       navigate("/admin");
     },
   });
-const logoutAsync = useMutation({
-  mutationFn: async () => {
-    await agent.post("/auth/logout");
-  },
-  onSuccess: async () => {
-   await queryClient.removeQueries({ queryKey: ["currentUser"] });
-    navigate("/");
-  },
-});
+
+  const logoutAsync = useMutation({
+    mutationFn: async () => {
+      await agent.post("/auth/logout");
+    },
+    onSuccess: async () => {
+      await queryClient.removeQueries({ queryKey: ["currentUser"] });
+      navigate("/");
+    },
+  });
+
   return {
     requestLoginAsync,
     loginAsync,
-    logoutAsync
+    logoutAsync,
   };
 };
