@@ -13,7 +13,7 @@ public class HomeService
         var home = await _homeRepository.GetHomeAsync();
         if (home != null)
         {
-            var dto = new HomeDTO(home.FullName, home.Title, home.Bio, home.GithubLink, home.LinkedInLink);
+            var dto = new HomeDTO(home.FullName, home.Title, home.Bio,home.Email, home.GithubLink, home.LinkedInLink);
             return Result<HomeDTO>.Success(dto);
         }
         return Result<HomeDTO>.Failure("Current home does not found");
@@ -29,6 +29,7 @@ public class HomeService
             FullName = dto.FullName,
             Title = dto.Title,
             Bio = dto.Bio,
+            Email = dto.Email,
             GithubLink = dto.GithubLink,
             LinkedInLink = dto.LinkedInLink,
         };
@@ -54,6 +55,9 @@ public class HomeService
 
         if (!string.IsNullOrEmpty(dto.Bio))
             home.Bio = dto.Bio;
+
+        if(!string.IsNullOrEmpty(dto.Email))
+            home.Email = dto.Email;
 
         if (!string.IsNullOrEmpty(dto.GithubLink))
             home.GithubLink = dto.GithubLink;
