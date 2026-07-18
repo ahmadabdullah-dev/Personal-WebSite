@@ -13,6 +13,7 @@ import RequireAuth from "./RequireAuth";
 import AdminDashboard from "../../features/admin/AdminDashboard";
 import CreateProject from "../../features/admin/projects/CreateProject";
 import DeleteProject from "../../features/admin/projects/DeleteProject";
+import CreateAbout from "../../features/admin/about/CreateAbout";
 
 export const routes = createBrowserRouter([
   {
@@ -27,6 +28,7 @@ export const routes = createBrowserRouter([
           { path: "admin", element: <AdminDashboard /> },
           { path: "admin/create-project", element: <CreateProject /> },
           { path: "admin/delete-project", element: <DeleteProject /> },
+          { path: "admin/create-about", element: <CreateAbout /> },
         ],
       },
       { path: "about", element: <About /> },

@@ -18,7 +18,7 @@ public class AboutService
         }
         return Result<AboutDTO>.Failure("Current About does not found");
     }
-    public async Task<Result<string>> AddAboutAsync(AboutDTO dto)
+    public async Task<Result<string>> CreateAboutAsync(AboutDTO dto)
     {
         var existing = await _aboutRepository.GetAboutAsync();
         if (existing != null)
@@ -33,7 +33,7 @@ public class AboutService
             LinkedInLink = dto.LinkedInLink,
         };
 
-        var createdAboutId = await _aboutRepository.AddAboutAsync(about);
+        var createdAboutId = await _aboutRepository.CreateAboutAsync(about);
 
         return createdAboutId != null
             ? Result<string>.Success("About Created Successfully")

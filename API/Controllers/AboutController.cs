@@ -19,10 +19,10 @@ namespace API.Controllers
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
         [Authorize]
-        [HttpPost("add")]
-        public async Task<IActionResult> AddAbout(AboutDTO dto)
+        [HttpPost("create")]
+        public async Task<IActionResult> CreateAbout(AboutDTO dto)
         {
-            var result = await _aboutService.AddAboutAsync(dto);
+            var result = await _aboutService.CreateAboutAsync(dto);
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
         [Authorize]

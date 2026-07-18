@@ -11,7 +11,7 @@ public class AboutRepository
         _context = context;
     }
 
-    public async Task<string> AddAboutAsync(About about)
+    public async Task<string> CreateAboutAsync(About about)
     {
         _context.Add(about);
         await _context.SaveChangesAsync();

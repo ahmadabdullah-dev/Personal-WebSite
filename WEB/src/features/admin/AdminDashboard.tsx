@@ -1,4 +1,4 @@
-import { Button, Box } from "@mui/material";
+import { Button, Box, Divider } from "@mui/material";
 import { useNavigate } from "react-router";
 
 export default function AdminDashboard() {
@@ -29,6 +29,16 @@ export default function AdminDashboard() {
         sx={{ maxWidth: { xs: "100%", sm: 220 } }}
       >
         Delete Project
+      </Button>
+      <Divider sx={{borderColor:"text.primary"}} />
+      <Button
+        variant="contained"
+        color="success"
+        fullWidth
+        onClick={() => navigate("create-about")}
+        sx={{ maxWidth: { xs: "100%", sm: 220 } }}
+      >
+        Create About
       </Button>
     </Box>
   );
