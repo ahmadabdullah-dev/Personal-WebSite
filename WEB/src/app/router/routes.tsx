@@ -12,6 +12,7 @@ import RequestLoginForm from "../../features/admin/auth/RequestLoginForm";
 import RequireAuth from "./RequireAuth";
 import AdminDashboard from "../../features/admin/AdminDashboard";
 import CreateProject from "../../features/admin/projects/CreateProject";
+import DeleteProject from "../../features/admin/projects/DeleteProject";
 
 export const routes = createBrowserRouter([
   {
@@ -25,6 +26,7 @@ export const routes = createBrowserRouter([
         children: [
           { path: "admin", element: <AdminDashboard /> },
           { path: "admin/create-project", element: <CreateProject /> },
+          { path: "admin/delete-project", element: <DeleteProject /> },
         ],
       },
       { path: "about", element: <About /> },
@@ -33,7 +35,7 @@ export const routes = createBrowserRouter([
       { path: "certificates", element: <Certificates /> },
       { path: "resume", element: <Resume /> },
       { path: "login", element: <RequestLoginForm /> },
-      { path: "projects/:slug", element: <Project  /> },
+      { path: "projects/:slug", element: <Project /> },
     ],
   },
   { path: "*", element: <NotFound /> },

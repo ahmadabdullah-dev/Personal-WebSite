@@ -10,7 +10,7 @@ export default function RequireAuth() {
   }
 
   if (currentUser.isError || !currentUser.data?.value) {
-    return <Navigate to="/" state={{ from: location }} replace />;
+    return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
   return <Outlet />;

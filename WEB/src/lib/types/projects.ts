@@ -30,3 +30,6 @@ export type UpdateProjectDTO = {
   githubLink: string;
   liveLink: string;
 };
+export type DeleteProjectDTO = {
+  slug: string;
+};
