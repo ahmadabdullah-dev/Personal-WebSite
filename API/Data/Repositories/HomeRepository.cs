@@ -2,24 +2,24 @@
 
 namespace API.Data.Repositories;
 
-public class AboutRepository
+public class HomeRepository
 {
     private readonly ApplicationDbContext _context;
 
-    public AboutRepository(ApplicationDbContext context)
+    public HomeRepository(ApplicationDbContext context)
     {
         _context = context;
     }
 
-    public async Task<string> CreateAboutAsync(About about)
+    public async Task<string> CreateHomeAsync(Home home)
     {
-        _context.Add(about);
+        _context.Add(home);
         await _context.SaveChangesAsync();
 
-        return about.Id;
+        return home.Id;
     }
 
-    public async Task<bool> DeleteAboutAsync(About about)
+    public async Task<bool> DeleteHomeAsync(Home about)
     {
         _context.Remove(about);
         var affected = await _context.SaveChangesAsync();
@@ -27,7 +27,7 @@ public class AboutRepository
         return affected > 0;
     }
 
-    public async Task<bool> UpdateAboutAsync(About about)
+    public async Task<bool> UpdateHomeAsync(Home about)
     {
         _context.Update(about);
         var affected = await _context.SaveChangesAsync();
@@ -35,7 +35,7 @@ public class AboutRepository
         return affected > 0;
     }
 
-    public async Task<About?> GetAboutAsync()
+    public async Task<Home?> GetHomeAsync()
     {
         return await _context.About.FirstOrDefaultAsync();
     }

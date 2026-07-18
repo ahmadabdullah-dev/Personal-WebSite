@@ -38,7 +38,7 @@ export default function AdminDashboard() {
         onClick={() => navigate("create-about")}
         sx={{ maxWidth: { xs: "100%", sm: 220 } }}
       >
-        Create About
+        Create Home
       </Button>
     </Box>
   );

@@ -1,6 +1,6 @@
 ﻿namespace API.Entities;
 
-public class About : BaseEntity
+public class Home : BaseEntity
 {
     public string FullName { get; set; } = string.Empty;
     public string Title { get; set; } = string.Empty;

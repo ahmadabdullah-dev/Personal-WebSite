@@ -4,7 +4,6 @@ import ErrorPage from "../../features/errors/ErrorPage";
 import NotFound from "../../features/errors/NotFound";
 import Projects from "../../features/projects/Projects";
 import Project from "../../features/projects/Project";
-import About from "../../features/about/About";
 import Contact from "../../features/contact/Contact";
 import Certificates from "../../features/certificates/Certificates";
 import Resume from "../../features/resume/Resume";
@@ -13,7 +12,9 @@ import RequireAuth from "./RequireAuth";
 import AdminDashboard from "../../features/admin/AdminDashboard";
 import CreateProject from "../../features/admin/projects/CreateProject";
 import DeleteProject from "../../features/admin/projects/DeleteProject";
-import CreateAbout from "../../features/admin/about/CreateAbout";
+import CreateHome from "../../features/admin/home/CreateAbout";
+import About from "../../features/about/About";
+import Home from "../../features/home/Home";
 
 export const routes = createBrowserRouter([
   {
@@ -21,16 +22,17 @@ export const routes = createBrowserRouter([
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
-      { index: true, element: <Navigate to="/" replace /> },
+      { index: true, element: <Navigate to="/home" replace /> },
       {
         element: <RequireAuth />,
         children: [
           { path: "admin", element: <AdminDashboard /> },
           { path: "admin/create-project", element: <CreateProject /> },
           { path: "admin/delete-project", element: <DeleteProject /> },
-          { path: "admin/create-about", element: <CreateAbout /> },
+          { path: "admin/create-about", element: <CreateHome /> },
         ],
       },
+      {path: "home", element:<Home />},
       { path: "about", element: <About /> },
       { path: "contact", element: <Contact /> },
       { path: "projects", element: <Projects /> },

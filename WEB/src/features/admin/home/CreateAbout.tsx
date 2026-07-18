@@ -10,30 +10,32 @@ import {
   CircularProgress,
   Alert,
 } from "@mui/material";
-import { useAbout } from "../../../lib/hooks/useAbout";
-import type { AboutDTO } from "../../../lib/types/about";
+import { useHome } from "../../../lib/hooks/useHome";
+import type { HomeDTO } from "../../../lib/types/home";
 
-export default function CreateAbout() {
-  const { addAboutAsync } = useAbout();
+export default function CreateHome() {
+  const { addHomeAsync } = useHome();
 
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<AboutDTO>({
+  } = useForm<HomeDTO>({
     defaultValues: {
-        fullName:"", bio:"", title:"", githubLink:"", linkedInLink:""
+      fullName: "",
+      bio: "",
+      title: "",
+      githubLink: "",
+      linkedInLink: "",
     },
   });
 
-  const onSubmit = (creds: AboutDTO) => {
-
-    addAboutAsync.mutate(creds, {
+  const onSubmit = (creds: HomeDTO) => {
+    addHomeAsync.mutate(creds, {
       onSuccess: () => {
         reset();
       },
-    
     });
   };
 
@@ -42,7 +44,7 @@ export default function CreateAbout() {
       <Box sx={{ py: 6 }}>
         <Paper sx={{ p: 4 }}>
           <Typography variant="h4" sx={{ mb: 3 }}>
-            Create About
+            Create Home
           </Typography>
 
           <Box component="form" onSubmit={handleSubmit(onSubmit)}>
@@ -53,7 +55,7 @@ export default function CreateAbout() {
                 {...register("fullName", { required: "FullName is required" })}
                 error={!!errors.fullName}
                 helperText={errors.fullName?.message}
-                disabled={addAboutAsync.isPending}
+                disabled={addHomeAsync.isPending}
               />
               <TextField
                 label="Title"
@@ -61,7 +63,7 @@ export default function CreateAbout() {
                 {...register("title")}
                 error={!!errors.title}
                 helperText={errors.title?.message}
-                disabled={addAboutAsync.isPending}
+                disabled={addHomeAsync.isPending}
               />
               <TextField
                 label="Bio"
@@ -69,42 +71,38 @@ export default function CreateAbout() {
                 multiline
                 minRows={5}
                 {...register("bio")}
-                disabled={addAboutAsync.isPending}
+                disabled={addHomeAsync.isPending}
               />
               <TextField
                 label="Github Link"
                 fullWidth
                 {...register("githubLink")}
-                disabled={addAboutAsync.isPending}
+                disabled={addHomeAsync.isPending}
               />
               <TextField
                 label="LinkedIn Link"
                 fullWidth
                 {...register("linkedInLink")}
-                disabled={addAboutAsync.isPending}
+                disabled={addHomeAsync.isPending}
               />
-             
+
               <Button
                 type="submit"
                 variant="contained"
                 fullWidth
-                disabled={addAboutAsync.isPending}
+                disabled={addHomeAsync.isPending}
               >
-                {addAboutAsync.isPending ? (
+                {addHomeAsync.isPending ? (
                   <CircularProgress size={24} color="inherit" />
                 ) : (
-                  "Create About"
+                  "Create Home"
                 )}
               </Button>
-              {addAboutAsync.error && (
-                <Alert severity="error">
-                  {addAboutAsync.error.message}
-                </Alert>
+              {addHomeAsync.error && (
+                <Alert severity="error">{addHomeAsync.error.message}</Alert>
               )}
-              {addAboutAsync.isSuccess && (
-                <Alert severity="success">
-                  {addAboutAsync.data?.value}
-                </Alert>
+              {addHomeAsync.isSuccess && (
+                <Alert severity="success">{addHomeAsync.data?.value}</Alert>
               )}
             </Stack>
           </Box>

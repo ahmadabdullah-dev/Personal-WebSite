@@ -67,10 +67,10 @@ public static class DependencyInjection
         services.AddScoped<ProjectService>();   
         services.AddScoped<UserService>();
         services.AddScoped<ProjectService>();
-        services.AddScoped<AboutService>();
+        services.AddScoped<HomeService>();
 
         services.AddScoped<ProjectRepository>();
-        services.AddScoped<AboutRepository>();
+        services.AddScoped<HomeRepository>();
 
         services.AddDataProtection();
 
