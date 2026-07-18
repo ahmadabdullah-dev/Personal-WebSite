@@ -66,8 +66,11 @@ public static class DependencyInjection
         services.AddScoped<EmailService>();
         services.AddScoped<ProjectService>();   
         services.AddScoped<UserService>();
+        services.AddScoped<ProjectService>();
+        services.AddScoped<AboutService>();
 
         services.AddScoped<ProjectRepository>();
+        services.AddScoped<AboutRepository>();
 
         services.AddDataProtection();
 
