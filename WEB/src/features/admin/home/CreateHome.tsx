@@ -25,6 +25,7 @@ export default function CreateHome() {
     defaultValues: {
       fullName: "",
       bio: "",
+      email:"",
       title: "",
       githubLink: "",
       linkedInLink: "",
@@ -74,6 +75,12 @@ export default function CreateHome() {
                 disabled={addHomeAsync.isPending}
               />
               <TextField
+                label="Email"
+                fullWidth
+                {...register("email")}
+                disabled={addHomeAsync.isPending}
+              />
+              <TextField
                 label="Github Link"
                 fullWidth
                 {...register("githubLink")}
@@ -85,7 +92,6 @@ export default function CreateHome() {
                 {...register("linkedInLink")}
                 disabled={addHomeAsync.isPending}
               />
-
               <Button
                 type="submit"
                 variant="contained"

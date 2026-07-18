@@ -6,9 +6,11 @@ import {
   Typography,
   IconButton,
   CircularProgress,
+  Button,
 } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import EmailIcon from "@mui/icons-material/Email";
 
 export default function Home() {
   const { readHomeAsync } = useHome();
@@ -131,7 +133,27 @@ export default function Home() {
                 <LinkedInIcon />
               </IconButton>
             )}
-          </Stack>
+            {home?.email && (
+              <IconButton
+                component="a"
+                href={`mailto:${home.email}`}
+                sx={{
+                  border: "1px solid",
+                  borderColor: "divider",
+                  "&:hover": { borderColor: "text.primary" },
+                }}
+              >
+                <EmailIcon />
+              </IconButton>
+            )}
+           
+          </Stack> 
+          <Button
+              href="/Test_CV.pdf"
+              variant="outlined"
+            >
+              Download CV
+            </Button>
         </Stack>
       </Stack>
     </Box>

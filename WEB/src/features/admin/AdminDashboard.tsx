@@ -30,15 +30,32 @@ export default function AdminDashboard() {
       >
         Delete Project
       </Button>
-      <Divider sx={{borderColor:"text.primary"}} />
+      <Divider sx={{ borderColor: "text.primary" }} />
       <Button
         variant="contained"
         color="success"
         fullWidth
-        onClick={() => navigate("create-about")}
+        onClick={() => navigate("create-home")}
         sx={{ maxWidth: { xs: "100%", sm: 220 } }}
       >
         Create Home
+      </Button>
+      <Button
+        variant="contained"
+        color="success"
+        fullWidth
+        onClick={() => navigate("update-home")}
+        sx={{ maxWidth: { xs: "100%", sm: 220 } }}
+      >
+        Update Home
+      </Button>
+      <Button
+        variant="contained"
+        fullWidth
+        onClick={() => navigate("delete-home")}
+        sx={{ maxWidth: { xs: "100%", sm: 220 } }}
+      >
+        Delete Home
       </Button>
     </Box>
   );
