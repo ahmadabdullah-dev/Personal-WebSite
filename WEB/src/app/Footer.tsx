@@ -1,20 +1,13 @@
-import {
-  Box,
-  Container,
-  Stack,
-  Typography,
-  IconButton,
-} from "@mui/material";
+import { Box, Container, Stack, Typography, IconButton } from "@mui/material";
 import GithubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-
-
-const SOCIALS = [
-  { label: "LinkedIn", href: "https://linkedin.com/in/ahmadabdullah-dev", icon: LinkedInIcon },
-  { label: "GitHub", href: "https://github.com/ahmadabdullah-dev", icon: GithubIcon },
-];
+import EmailIcon from "@mui/icons-material/Email";
+import { useHome } from "../lib/hooks/useHome";
 
 export default function Footer() {
+  const { readHomeAsync } = useHome();
+  const home = readHomeAsync.data?.value;
+
   return (
     <Box
       component="footer"
@@ -45,14 +38,14 @@ export default function Footer() {
           </Typography>
 
           <Stack direction="row" spacing={0.5}>
-            {SOCIALS.map(({ label, href, icon: Icon }) => (
+            
+            {home?.githubLink && (
               <IconButton
-                key={label}
                 component="a"
-                href={href}
+                href={home.githubLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={label}
+                aria-label="GitHub"
                 disableRipple
                 size="small"
                 sx={{
@@ -61,9 +54,44 @@ export default function Footer() {
                   "&:hover": { color: "text.primary" },
                 }}
               >
-                <Icon fontSize="small" />
+                <GithubIcon />
               </IconButton>
-            ))}
+            )}
+            {home?.linkedInLink && (
+              <IconButton
+                component="a"
+                href={home.linkedInLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                disableRipple
+                size="small"
+                sx={{
+                  color: "text.secondary",
+                  borderRadius: 0,
+                  "&:hover": { color: "text.primary" },
+                }}
+              >
+                <LinkedInIcon />
+              </IconButton>
+              )}
+              {home?.email && (
+              <IconButton
+                component="a"
+                href={`mailto:${home.email}`}
+                aria-label="Email"
+                disableRipple
+                size="small"
+                sx={{
+                  color: "text.secondary",
+                  borderRadius: 0,
+                  "&:hover": { color: "text.primary" },
+                }}
+              >
+                <EmailIcon />
+              </IconButton>
+            )}
+            
           </Stack>
         </Stack>
       </Container>
