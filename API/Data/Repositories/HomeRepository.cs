@@ -37,6 +37,6 @@ public class HomeRepository
 
     public async Task<Home?> GetHomeAsync()
     {
-        return await _context.About.FirstOrDefaultAsync();
+        return await _context.Home.FirstOrDefaultAsync();
     }
 }
