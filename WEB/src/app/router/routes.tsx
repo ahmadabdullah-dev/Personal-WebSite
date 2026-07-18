@@ -15,6 +15,7 @@ import About from "../../features/about/About";
 import Home from "../../features/home/Home";
 import UpdateHome from "../../features/admin/home/UpdateHome";
 import DeleteHome from "../../features/admin/home/DeleteHome";
+import UpdateProject from "../../features/admin/projects/UpdateProject";
 
 export const routes = createBrowserRouter([
   {
@@ -29,6 +30,7 @@ export const routes = createBrowserRouter([
           { path: "admin", element: <AdminDashboard /> },
           { path: "admin/create-project", element: <CreateProject /> },
           { path: "admin/delete-project", element: <DeleteProject /> },
+          { path: "admin/update-project", element: <UpdateProject /> },
           { path: "admin/create-home", element: <CreateHome /> },
           { path: "admin/update-home", element: <UpdateHome /> },
           { path: "admin/delete-home", element: <DeleteHome /> },

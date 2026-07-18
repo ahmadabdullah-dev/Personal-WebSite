@@ -30,6 +30,14 @@ export default function AdminDashboard() {
       >
         Delete Project
       </Button>
+      <Button
+        variant="contained"
+        fullWidth
+        onClick={() => navigate("update-project")}
+        sx={{ maxWidth: { xs: "100%", sm: 220 } }}
+      >
+        Update Project
+      </Button>
       <Divider sx={{ borderColor: "text.primary" }} />
       <Button
         variant="contained"

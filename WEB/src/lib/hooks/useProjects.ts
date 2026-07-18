@@ -1,18 +1,23 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import agent from "../api/agent";
-import type { CreateProjectDTO, DeleteProjectDTO, ProjectDTO } from "../types/projects";
+import type { CreateProjectDTO, DeleteProjectDTO, ProjectDTO, UpdateProjectDTO } from "../types/projects";
 import type { PaginatedList, PaginationParams, Result } from "../types/common";
 
 export const useProjects = (pagination?: PaginationParams, slug?: string) => {
    const queryClient = useQueryClient();
 
-  const createProjectAsync = useMutation({
-    mutationFn: async (creds: CreateProjectDTO) => {
-      const response = await agent.post("/projects/create", creds);
-      return response.data;
-    },
-  });
-
+ const createProjectAsync = useMutation({
+   mutationFn: async (creds: CreateProjectDTO) => {
+     const response = await agent.post("/projects/create", creds);
+     return response.data;
+   },
+ }); 
+const updateProjectAsync = useMutation({
+  mutationFn: async (creds: UpdateProjectDTO) => {
+    const response = await agent.put(`/projects/${slug}`, creds);
+    return response.data;
+  },
+});
   const getProjectsAsync = useQuery({
     queryKey: ["projects", pagination?.page, pagination?.pageSize],
     queryFn: async () =>
@@ -43,6 +48,7 @@ export const useProjects = (pagination?: PaginationParams, slug?: string) => {
     createProjectAsync,
     getProjectsAsync,
     getProjectBySlugAsync,
-    deleteProjectBySlugAsync
+    deleteProjectBySlugAsync,
+    updateProjectAsync
   };
 };
