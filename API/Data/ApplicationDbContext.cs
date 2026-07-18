@@ -10,6 +10,7 @@ public class ApplicationDbContext : IdentityDbContext<AppUser>
             
     }  
     public DbSet<Project> Projects { get; set; }
+    public DbSet<About> About { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
