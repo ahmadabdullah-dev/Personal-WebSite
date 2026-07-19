@@ -34,9 +34,6 @@ public class SkillsService
        
         var dtos = skills.Select(s => new SkillDTO(s.Name)).ToList();
 
-        if (dtos.Count == 0)
-            return Result<List<SkillDTO>>.Failure("No Skills Found");
-
         return Result<List<SkillDTO>>.Success(dtos);
     }
 }

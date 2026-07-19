@@ -20,13 +20,7 @@ export default function CreateContact() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<CreateContactDTO>({
-    defaultValues: {
-      fullName: "",
-      email: "",
-      message: "",
-    },
-  });
+  } = useForm<CreateContactDTO>();
 
   const onSubmit = (creds: CreateContactDTO) => {
     createContactAsync.mutate(creds);
