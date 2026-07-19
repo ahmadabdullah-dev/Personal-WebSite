@@ -1,12 +1,23 @@
-﻿namespace API.Services;
+﻿using Microsoft.Extensions.Options;
+
+namespace API.Services;
 
 public class ContactService
 {
     private readonly ContactRepository _contactRepository;
+    private readonly RecieverConfiguration _recieverConfiguration;
+    private readonly EmailService _emailService;
 
-    public ContactService(ContactRepository contactRepository)
+    private readonly ILogger<ContactService> _logger;
+    public ContactService(ContactRepository contactRepository,
+        IOptions<RecieverConfiguration> recieverConfiguration,
+        EmailService emailService,
+        ILogger<ContactService> logger)
     {
         _contactRepository = contactRepository;
+        _recieverConfiguration = recieverConfiguration.Value;
+        _emailService = emailService;
+        _logger = logger;
     }
 
     public async Task<Result<PagedList<ContactDTO>>> GetContactsAsync(PaginationParams p)
@@ -47,6 +58,14 @@ public class ContactService
         if (string.IsNullOrEmpty(createdId))
             return Result<string>.Failure("Unexpected error occurred while sending the message");
 
+        try
+        {
+            await _emailService.SendEmailAsync(_recieverConfiguration.Email,"New Message", $"You have a new message. From {dto.FullName} please check your inbox in your portfolio dashboard.");
+        }
+        catch (Exception ex)
+        {
+             _logger.LogError(ex, "Failed to send contact notification email");
+        }
         return Result<string>.Success("Message sent successfully");
     }
 }

@@ -61,7 +61,8 @@ public static class DependencyInjection
 
         services.Configure<EmailConfiguration>(configuration.GetSection("EmailConfiguration"));
         services.Configure<AdminConfiguration>(configuration.GetSection("Seed:Admin"));
-        
+        services.Configure<RecieverConfiguration>(configuration.GetSection("Reciever"));
+
         services.AddScoped<AuthService>();
         services.AddScoped<EmailService>();
         services.AddScoped<ContactService>();   
