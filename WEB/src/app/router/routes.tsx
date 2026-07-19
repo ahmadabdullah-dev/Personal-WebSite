@@ -4,7 +4,7 @@ import ErrorPage from "../../features/errors/ErrorPage";
 import NotFound from "../../features/errors/NotFound";
 import Projects from "../../features/projects/Projects";
 import Project from "../../features/projects/Project";
-import Contact from "../../features/contact/Contact";
+import Contact from "../../features/contact/CreateContact";
 import RequestLoginForm from "../../features/admin/auth/RequestLoginForm";
 import RequireAuth from "./RequireAuth";
 import AdminDashboard from "../../features/admin/AdminDashboard";
@@ -16,6 +16,7 @@ import Home from "../../features/home/Home";
 import UpdateHome from "../../features/admin/home/UpdateHome";
 import DeleteHome from "../../features/admin/home/DeleteHome";
 import UpdateProject from "../../features/admin/projects/UpdateProject";
+import Contacts from "../../features/admin/contact/Contacts";
 
 export const routes = createBrowserRouter([
   {
@@ -34,6 +35,7 @@ export const routes = createBrowserRouter([
           { path: "admin/create-home", element: <CreateHome /> },
           { path: "admin/update-home", element: <UpdateHome /> },
           { path: "admin/delete-home", element: <DeleteHome /> },
+          { path: "admin/contacts", element: <Contacts /> },
         ],
       },
       { path: "home", element: <Home /> },

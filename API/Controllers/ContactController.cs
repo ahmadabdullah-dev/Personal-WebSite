@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
 
@@ -17,6 +18,7 @@ public class ContactController : ControllerBase
         var result = await _contactService.CreateContactAsync(dto);
         return result.IsSuccess ? Ok(result) : BadRequest(result);
     }
+    [Authorize]
     [HttpGet("all")]
     public async Task<IActionResult> GetAll([FromQuery] PaginationParams p)
     {

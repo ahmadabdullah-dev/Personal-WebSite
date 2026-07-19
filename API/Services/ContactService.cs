@@ -60,7 +60,7 @@ public class ContactService
 
         try
         {
-            await _emailService.SendEmailAsync(_recieverConfiguration.Email,"New Message", $"You have a new message. From {dto.FullName} please check your inbox in your portfolio dashboard.");
+            await _emailService.SendEmailAsync(_recieverConfiguration.Email,"New Message", $" From {dto.FullName}; Email:{dto.Email}; Message: {dto.Message};");
         }
         catch (Exception ex)
         {

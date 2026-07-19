@@ -13,7 +13,7 @@ export default function AdminDashboard() {
         gap: { xs: 1.5, sm: 2 },
       }}
     >
-      <LogoutButton/>
+      <LogoutButton />
       <Button
         variant="contained"
         color="success"
@@ -66,6 +66,15 @@ export default function AdminDashboard() {
         sx={{ maxWidth: { xs: "100%", sm: 220 } }}
       >
         Delete Home
+      </Button>
+      <Divider sx={{ borderColor: "text.primary" }} />
+      <Button
+        variant="contained"
+        fullWidth
+        onClick={() => navigate("contacts")}
+        sx={{ maxWidth: { xs: "100%", sm: 220 } }}
+      >
+        Contacts
       </Button>
     </Box>
   );
