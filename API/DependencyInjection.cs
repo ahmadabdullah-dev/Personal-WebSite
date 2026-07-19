@@ -64,13 +64,15 @@ public static class DependencyInjection
         
         services.AddScoped<AuthService>();
         services.AddScoped<EmailService>();
-        services.AddScoped<ProjectService>();   
+        services.AddScoped<ContactService>();   
         services.AddScoped<UserService>();
-        services.AddScoped<ProjectService>();
+        services.AddScoped<ContactService>();
         services.AddScoped<HomeService>();
+        services.AddScoped<ContactService>();
 
         services.AddScoped<ProjectRepository>();
         services.AddScoped<HomeRepository>();
+        services.AddScoped<ContactRepository>();
 
         services.AddDataProtection();
 
