@@ -1,4 +1,4 @@
-﻿namespace Business;
+﻿namespace API;
 
 public static class EmailPurposes
 {

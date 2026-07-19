@@ -12,6 +12,7 @@ public class ApplicationDbContext : IdentityDbContext<AppUser>
     public DbSet<Project> Projects { get; set; }
     public DbSet<Home> Home { get; set; }
     public DbSet<Contact> Contacts { get; set; }
+    public DbSet<Skill> Skills { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

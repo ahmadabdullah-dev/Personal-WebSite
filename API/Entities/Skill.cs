@@ -1,0 +1,6 @@
+﻿namespace API.Entities;
+
+public class Skill : BaseEntity
+{
+    public string Name { get; set; } = string.Empty;
+}
