@@ -70,6 +70,7 @@ public static class DependencyInjection
         services.AddScoped<ContactService>();
         services.AddScoped<HomeService>();
         services.AddScoped<ContactService>();
+        services.AddScoped<ProjectService>();
 
         services.AddScoped<ProjectRepository>();
         services.AddScoped<HomeRepository>();

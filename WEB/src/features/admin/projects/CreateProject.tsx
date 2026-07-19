@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import { useForm } from "react-hook-form";
 import { useProjects } from "../../../lib/hooks/useProjects";
 import type { CreateProjectDTO } from "../../../lib/types/projects";
@@ -20,39 +19,13 @@ export default function CreateProject() {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
-  } = useForm<CreateProjectDTO>({
-    defaultValues: {
-      slug: "",
-      name: "",
-      shortDescription: "",
-      longDescription: "",
-      githubLink: "",
-      liveLink: "",
-      techStack: "",
-    },
-  });
+  } = useForm<CreateProjectDTO>();
 
 
-  const isSubmittingRef = useRef(false);
 
   const onSubmit = (creds: CreateProjectDTO) => {
-    if (isSubmittingRef.current) return;
-    isSubmittingRef.current = true;
-
-    createProjectAsync.mutate(creds, {
-      onSuccess: () => {
-        reset();
-        (document.activeElement as HTMLElement | null)?.blur();
-        setTimeout(() => {
-          isSubmittingRef.current = false;
-        }, 400);
-      },
-      onError: () => {
-        isSubmittingRef.current = false;
-      },
-    });
+    createProjectAsync.mutate(creds);
   };
 
   return (
