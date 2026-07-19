@@ -1,5 +1,6 @@
 import { Button, Box, Divider } from "@mui/material";
 import { useNavigate } from "react-router";
+import LogoutButton from "./auth/LogoutButton";
 
 export default function AdminDashboard() {
   const navigate = useNavigate();
@@ -12,6 +13,7 @@ export default function AdminDashboard() {
         gap: { xs: 1.5, sm: 2 },
       }}
     >
+      <LogoutButton/>
       <Button
         variant="contained"
         color="success"
