@@ -19,7 +19,7 @@ public class AboutRepository
         return about.Id;
     }
 
-    public async Task<bool> DeleteHomeAsync(About about)
+    public async Task<bool> DeleteAboutAsync(About about)
     {
         _context.Remove(about);
         var affected = await _context.SaveChangesAsync();

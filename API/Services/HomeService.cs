@@ -8,7 +8,7 @@ public class HomeService
     {
         _homeRepository = homeRepository;
     }
-    public async Task<Result<HomeDTO>> ReadAboutAsync()
+    public async Task<Result<HomeDTO>> ReadHomeAsync()
     {
         var home = await _homeRepository.GetHomeAsync();
         if (home != null)

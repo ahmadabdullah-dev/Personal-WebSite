@@ -15,7 +15,7 @@ namespace API.Controllers
         [HttpGet("read")]
         public async Task<IActionResult> ReadHome()
         {
-            var result = await _homeService.ReadAboutAsync();
+            var result = await _homeService.ReadHomeAsync();
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
         [Authorize]
