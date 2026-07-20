@@ -1,21 +1,12 @@
-import { useSkills } from "../../lib/hooks/useSkills";
-import {
-  Box,
-  Typography,
-  Chip,
-  Stack,
-  Alert,
-  Paper,
-} from "@mui/material";
+import { useSkills } from "../../../lib/hooks/useSkills";
+import { Box, Typography, Chip, Stack, Alert, Paper } from "@mui/material";
 
 export default function Skills() {
   const { readSkillsAsync } = useSkills();
   const { data, isLoading, isError } = readSkillsAsync;
 
   if (isLoading) {
-    return (
-      <div>Loading...</div>
-    );
+    return <div>Loading...</div>;
   }
 
   if (isError) {
