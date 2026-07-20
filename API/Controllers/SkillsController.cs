@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
 
@@ -17,12 +18,14 @@ public class SkillsController : ControllerBase
         var result = await _skillsService.ReadSkillsAsync();
         return result.IsSuccess ? Ok(result) : BadRequest(result);
     }
+    [Authorize]
     [HttpPost("create")]
     public async Task<IActionResult> CreateSkill(SkillDTO dto)
     {
         var result = await _skillsService.CreateSkillAsync(dto);
         return result.IsSuccess ? Ok(result) : BadRequest(result);
     }
+    [Authorize]
     [HttpDelete("delete")]
     public async Task<IActionResult> DeleteSkill(SkillDTO dto)
     {

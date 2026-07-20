@@ -19,17 +19,17 @@ public class HomeRepository
         return home.Id;
     }
 
-    public async Task<bool> DeleteHomeAsync(Home about)
+    public async Task<bool> DeleteHomeAsync(Home home)
     {
-        _context.Remove(about);
+        _context.Remove(home);
         var affected = await _context.SaveChangesAsync();
 
         return affected > 0;
     }
 
-    public async Task<bool> UpdateHomeAsync(Home about)
+    public async Task<bool> UpdateHomeAsync(Home home)
     {
-        _context.Update(about);
+        _context.Update(home);
         var affected = await _context.SaveChangesAsync();
 
         return affected > 0;
