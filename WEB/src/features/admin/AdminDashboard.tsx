@@ -93,6 +93,31 @@ export default function AdminDashboard() {
       >
         Delete Skill
       </Button>
+      <Divider sx={{ borderColor: "text.primary" }} />
+      <Button
+        variant="contained"
+        fullWidth
+        onClick={() => navigate("create-about")}
+        sx={{ maxWidth: { xs: "100%", sm: 220 } }}
+      >
+        Create About
+      </Button>
+      <Button
+        variant="contained"
+        fullWidth
+        onClick={() => navigate("update-about")}
+        sx={{ maxWidth: { xs: "100%", sm: 220 } }}
+      >
+        Update About
+      </Button>
+      <Button
+        variant="contained"
+        fullWidth
+        onClick={() => navigate("delete-about")}
+        sx={{ maxWidth: { xs: "100%", sm: 220 } }}
+      >
+        Delete About
+      </Button>
     </Box>
   );
 }
