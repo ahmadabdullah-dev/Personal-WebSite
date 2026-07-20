@@ -12,16 +12,15 @@ export const useSkills = () => {
     staleTime: 5 * 60 * 1000,
     });
 
-    const deleteSkillAsync = useMutation({
-    mutationFn: async (creds: SkillDTO) => {
-    const response = await agent.delete("/skills/delete",creds);
-    return response.data;
-    },
-      onSuccess: () => {
-        queryClient.invalidateQueries({ queryKey: ["skills"] });
-      },
-    });
-    
+   const deleteSkillAsync = useMutation({
+     mutationFn: async (creds: SkillDTO) => {
+       const response = await agent.delete("/skills/delete", { data: creds });
+       return response.data;
+     },
+     onSuccess: () => {
+       queryClient.invalidateQueries({ queryKey: ["skills"] });
+     },
+   });
     const createSkillAsync = useMutation({
     mutationFn: async (creds: SkillDTO) => {
      const response = await agent.post("/skills/create", creds);

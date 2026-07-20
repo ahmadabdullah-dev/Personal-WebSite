@@ -76,6 +76,23 @@ export default function AdminDashboard() {
       >
         Contacts
       </Button>
+      <Divider sx={{ borderColor: "text.primary" }} />
+      <Button
+        variant="contained"
+        fullWidth
+        onClick={() => navigate("create-skill")}
+        sx={{ maxWidth: { xs: "100%", sm: 220 } }}
+      >
+        Create Skill
+      </Button>
+      <Button
+        variant="contained"
+        fullWidth
+        onClick={() => navigate("delete-skill")}
+        sx={{ maxWidth: { xs: "100%", sm: 220 } }}
+      >
+        Delete Skill
+      </Button>
     </Box>
   );
 }

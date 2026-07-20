@@ -17,6 +17,8 @@ import UpdateHome from "../../features/admin/home/UpdateHome";
 import DeleteHome from "../../features/admin/home/DeleteHome";
 import UpdateProject from "../../features/admin/projects/UpdateProject";
 import Contacts from "../../features/admin/contact/Contacts";
+import DeleteSkill from "../../features/admin/about/Skills/DeleteSkill";
+import CreateSkill from "../../features/admin/about/Skills/CreateSkill";
 
 export const routes = createBrowserRouter([
   {
@@ -36,6 +38,8 @@ export const routes = createBrowserRouter([
           { path: "admin/update-home", element: <UpdateHome /> },
           { path: "admin/delete-home", element: <DeleteHome /> },
           { path: "admin/contacts", element: <Contacts /> },
+          { path: "admin/create-skill", element: <CreateSkill /> },
+          { path: "admin/delete-skill", element: <DeleteSkill /> },
         ],
       },
       { path: "home", element: <Home /> },
