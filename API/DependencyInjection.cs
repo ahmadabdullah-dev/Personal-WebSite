@@ -42,18 +42,27 @@ public static class DependencyInjection
 
             options.RejectionStatusCode = 429; 
         });
-        
+
         services.AddDbContext<ApplicationDbContext>(opt =>
         {
-            var connectionString = configuration.GetConnectionString("DefaultConnection")
-             ?? throw new InvalidOperationException("DefaultConnection is not configured.");
+            var connectionString = configuration.GetConnectionString("DefaultConnection");
+
+            if (string.IsNullOrEmpty(connectionString))
+            {
+                connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection");
+            }
+
+
+            if (string.IsNullOrEmpty(connectionString))
+            {
+                throw new InvalidOperationException("Database connection string is not configured.");
+            }
 
             opt.UseNpgsql(connectionString, sql =>
             {
                 sql.EnableRetryOnFailure(maxRetryCount: 3, maxRetryDelay: TimeSpan.FromSeconds(5), errorCodesToAdd: null);
             });
         });
-
         services.AddIdentity<AppUser, IdentityRole>(options =>
         {
             options.User.RequireUniqueEmail = true;
