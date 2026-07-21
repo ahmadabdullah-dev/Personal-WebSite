@@ -11,7 +11,7 @@ import {
   Alert,
 } from "@mui/material";
 import { useHome } from "../../../lib/hooks/useHome";
-import type { HomeDTO } from "../../../lib/types/home";
+import type { CreateHomeDTO } from "../../../lib/types/home";
 
 export default function CreateHome() {
   const { addHomeAsync } = useHome();
@@ -21,7 +21,7 @@ export default function CreateHome() {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<HomeDTO>({
+  } = useForm<CreateHomeDTO>({
     defaultValues: {
       fullName: "",
       bio: "",
@@ -32,7 +32,7 @@ export default function CreateHome() {
     },
   });
 
-  const onSubmit = (creds: HomeDTO) => {
+  const onSubmit = (creds: CreateHomeDTO) => {
     addHomeAsync.mutate(creds, {
       onSuccess: () => {
         reset();

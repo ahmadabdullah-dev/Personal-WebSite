@@ -67,6 +67,14 @@ export default function AdminDashboard() {
       >
         Delete Home
       </Button>
+      <Button
+        variant="contained"
+        fullWidth
+        onClick={() => navigate("add-home-files")}
+        sx={{ maxWidth: { xs: "100%", sm: 220 } }}
+      >
+        Add Home Files
+      </Button>
       <Divider sx={{ borderColor: "text.primary" }} />
       <Button
         variant="contained"

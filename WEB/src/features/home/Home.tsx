@@ -55,7 +55,7 @@ export default function Home() {
         }}
       >
         <Avatar
-          src="/Ahmad_Abdullah.jpeg"
+          src={home?.homeImageUrl}
           alt={home?.fullName ?? "Profile photo"}
           sx={{
             width: { xs: 240, sm: 280, md: 340 },
@@ -146,14 +146,17 @@ export default function Home() {
                 <EmailIcon />
               </IconButton>
             )}
-           
-          </Stack> 
-          <Button
-              href="/Test_CV.pdf"
+          </Stack>
+          {home?.cvUrl && (
+            <Button
+              href={home.cvUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               variant="outlined"
             >
               Download CV
             </Button>
+          )}
         </Stack>
       </Stack>
     </Box>

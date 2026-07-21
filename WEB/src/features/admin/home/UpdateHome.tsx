@@ -12,7 +12,7 @@ import {
   Alert,
 } from "@mui/material";
 import { useHome } from "../../../lib/hooks/useHome";
-import type { HomeDTO } from "../../../lib/types/home";
+import type { UpdateHomeDTO } from "../../../lib/types/home";
 
 export default function UpdateHome() {
   const { updateHomeAsync, readHomeAsync } = useHome();
@@ -20,22 +20,21 @@ export default function UpdateHome() {
   const {
     register,
     handleSubmit,
-    reset,
+    setValue,
     formState: { errors },
-  } = useForm<HomeDTO>();
+  } = useForm<UpdateHomeDTO>();
 
   useEffect(() => {
     if (readHomeAsync.data?.value) {
-      reset(readHomeAsync.data.value);
+      const home = readHomeAsync.data.value;
+      (Object.keys(home) as (keyof UpdateHomeDTO)[]).forEach((key) => {
+        setValue(key, home[key]);
+      });
     }
-  }, [readHomeAsync.data]);
+  }, [readHomeAsync.data, setValue]);
 
-  const onSubmit = (creds: HomeDTO) => {
-    updateHomeAsync.mutate(creds, {
-      onSuccess: () => {
-        reset(creds);
-      },
-    });
+  const onSubmit = (creds: UpdateHomeDTO) => {
+    updateHomeAsync.mutate(creds);
   };
 
   if (readHomeAsync.isLoading) {

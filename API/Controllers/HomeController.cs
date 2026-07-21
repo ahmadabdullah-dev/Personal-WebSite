@@ -20,16 +20,23 @@ namespace API.Controllers
         }
         [Authorize]
         [HttpPost("create")]
-        public async Task<IActionResult> CreateHome(HomeDTO dto)
+        public async Task<IActionResult> CreateHome(CreateHomeDTO dto)
         {
             var result = await _homeService.CreateHomeAsync(dto);
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
         [Authorize]
         [HttpPut("update")]
-        public async Task<IActionResult> UpdateHome(HomeDTO dto)
+        public async Task<IActionResult> UpdateHome(UpdateHomeDTO dto)
         {
             var result = await _homeService.UpdateHomeAsync(dto);
+            return result.IsSuccess ? Ok(result) : BadRequest(result);
+        }
+        [Authorize]
+        [HttpPost("files")]
+        public async Task<IActionResult> AddHomeFiles([FromForm] AddHomeFilesDTO dto)
+        {
+            var result = await _homeService.AddHomeFilesAsync(dto);
             return result.IsSuccess ? Ok(result) : BadRequest(result);
         }
         [Authorize]

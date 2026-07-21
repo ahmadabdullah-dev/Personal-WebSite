@@ -22,6 +22,7 @@ import CreateSkill from "../../features/admin/about/Skills/CreateSkill";
 import CreateAbout from "../../features/admin/about/CreateAbout";
 import UpdateAbout from "../../features/admin/about/UpdateAbout";
 import DeleteAbout from "../../features/admin/about/DeleteAbout";
+import AddHomeFiles from "../../features/admin/home/AddHomeFiles";
 
 export const routes = createBrowserRouter([
   {
@@ -46,6 +47,7 @@ export const routes = createBrowserRouter([
           { path: "admin/create-about", element: <CreateAbout /> },
           { path: "admin/update-about", element: <UpdateAbout /> },
           { path: "admin/delete-about", element: <DeleteAbout /> },
+          { path: "admin/add-home-files", element: <AddHomeFiles /> },
         ],
       },
       { path: "home", element: <Home /> },
