@@ -16,21 +16,17 @@ public static class DependencyInjection
             options.ExpireTimeSpan = TimeSpan.FromDays(7);
             options.SlidingExpiration = true;
         });
-        var allowedOrigins = configuration.GetSection("Cors:AllowedOrigins").Get<string[]>()
-           ?? throw new InvalidOperationException("Cors:AllowedOrigins is not configured.");
-
         services.AddCors(options =>
         {
             options.AddPolicy("AllowWeb",
                 policy =>
                 {
-                    policy.WithOrigins(allowedOrigins)
+                    policy.WithOrigins("https://localhost:3000")
                           .AllowAnyHeader()
                           .AllowAnyMethod()
                           .AllowCredentials();
                 });
         });
-        
         services.AddRateLimiter(options =>
         {
             options.AddFixedWindowLimiter("rateLimiter", opt =>
