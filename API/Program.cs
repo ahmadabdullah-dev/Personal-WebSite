@@ -3,6 +3,7 @@ using Scalar.AspNetCore;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddAPI(builder.Configuration);
+builder.Services.AddHttpClient(); 
 
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
@@ -23,6 +24,7 @@ app.UseHttpsRedirection();
 
 app.UseCors("AllowWeb");
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
