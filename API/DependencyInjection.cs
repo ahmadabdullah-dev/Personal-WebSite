@@ -21,7 +21,7 @@ public static class DependencyInjection
             options.AddPolicy("AllowWeb",
                 policy =>
                 {
-                    policy.WithOrigins("https://localhost:3000")
+                    policy.WithOrigins("https://localhost:3000", "https://ahmadabdullah-site.netlify.app")
                           .AllowAnyHeader()
                           .AllowAnyMethod()
                           .AllowCredentials();
