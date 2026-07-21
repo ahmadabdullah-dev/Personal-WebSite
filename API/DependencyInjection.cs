@@ -12,14 +12,19 @@ public static class DependencyInjection
         {
             options.Cookie.SameSite = SameSiteMode.None;
             options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+            options.Cookie.HttpOnly = true;
+            options.ExpireTimeSpan = TimeSpan.FromDays(7);
+            options.SlidingExpiration = true;
         });
+        var allowedOrigins = configuration.GetSection("Cors:AllowedOrigins").Get<string[]>()
+           ?? throw new InvalidOperationException("Cors:AllowedOrigins is not configured.");
 
         services.AddCors(options =>
         {
             options.AddPolicy("AllowWeb",
                 policy =>
                 {
-                    policy.WithOrigins("https://localhost:3000")
+                    policy.WithOrigins(allowedOrigins)
                           .AllowAnyHeader()
                           .AllowAnyMethod()
                           .AllowCredentials();
@@ -40,7 +45,13 @@ public static class DependencyInjection
         
         services.AddDbContext<ApplicationDbContext>(opt =>
         {
-            opt.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+            var connectionString = configuration.GetConnectionString("DefaultConnection")
+             ?? throw new InvalidOperationException("DefaultConnection is not configured.");
+
+            opt.UseNpgsql(connectionString, sql =>
+            {
+                sql.EnableRetryOnFailure(maxRetryCount: 3, maxRetryDelay: TimeSpan.FromSeconds(5), errorCodesToAdd: null);
+            });
         });
 
         services.AddIdentity<AppUser, IdentityRole>(options =>
@@ -57,8 +68,6 @@ public static class DependencyInjection
         .AddEntityFrameworkStores<ApplicationDbContext>()
         .AddDefaultTokenProviders();
        
-      
-
         services.Configure<EmailConfiguration>(configuration.GetSection("EmailConfiguration"));
         services.Configure<AdminConfiguration>(configuration.GetSection("Seed:Admin"));
         services.Configure<RecieverConfiguration>(configuration.GetSection("Reciever"));
