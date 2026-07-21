@@ -5,127 +5,126 @@ import LogoutButton from "./auth/LogoutButton";
 export default function AdminDashboard() {
   const navigate = useNavigate();
   return (
-    <Box
-      sx={{
-        p: { xs: 2, sm: 3 },
-        display: "flex",
-        flexDirection: { xs: "column", sm: "row" },
-        gap: { xs: 1.5, sm: 2 },
-      }}
-    >
-      <LogoutButton />
-      <Button
-        variant="contained"
-        color="success"
-        fullWidth
-        onClick={() => navigate("create-project")}
-        sx={{ maxWidth: { xs: "100%", sm: 220 } }}
+    <Box sx={{ p: { xs: 2, sm: 3 } }}>
+      <Box sx={{ mb: 2 }}>
+        <LogoutButton />
+      </Box>
+
+      <Box
+        sx={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: 1.5,
+        }}
       >
-        New Project
-      </Button>
-      <Button
-        variant="contained"
-        color="error"
-        fullWidth
-        onClick={() => navigate("delete-project")}
-        sx={{ maxWidth: { xs: "100%", sm: 220 } }}
-      >
-        Delete Project
-      </Button>
-      <Button
-        variant="contained"
-        fullWidth
-        onClick={() => navigate("update-project")}
-        sx={{ maxWidth: { xs: "100%", sm: 220 } }}
-      >
-        Update Project
-      </Button>
-      <Divider sx={{ borderColor: "text.primary" }} />
-      <Button
-        variant="contained"
-        color="success"
-        fullWidth
-        onClick={() => navigate("create-home")}
-        sx={{ maxWidth: { xs: "100%", sm: 220 } }}
-      >
-        Create Home
-      </Button>
-      <Button
-        variant="contained"
-        color="success"
-        fullWidth
-        onClick={() => navigate("update-home")}
-        sx={{ maxWidth: { xs: "100%", sm: 220 } }}
-      >
-        Update Home
-      </Button>
-      <Button
-        variant="contained"
-        fullWidth
-        onClick={() => navigate("delete-home")}
-        sx={{ maxWidth: { xs: "100%", sm: 220 } }}
-      >
-        Delete Home
-      </Button>
-      <Button
-        variant="contained"
-        fullWidth
-        onClick={() => navigate("add-home-files")}
-        sx={{ maxWidth: { xs: "100%", sm: 220 } }}
-      >
-        Add Home Files
-      </Button>
-      <Divider sx={{ borderColor: "text.primary" }} />
-      <Button
-        variant="contained"
-        fullWidth
-        onClick={() => navigate("contacts")}
-        sx={{ maxWidth: { xs: "100%", sm: 220 } }}
-      >
-        Contacts
-      </Button>
-      <Divider sx={{ borderColor: "text.primary" }} />
-      <Button
-        variant="contained"
-        fullWidth
-        onClick={() => navigate("create-skill")}
-        sx={{ maxWidth: { xs: "100%", sm: 220 } }}
-      >
-        Create Skill
-      </Button>
-      <Button
-        variant="contained"
-        fullWidth
-        onClick={() => navigate("delete-skill")}
-        sx={{ maxWidth: { xs: "100%", sm: 220 } }}
-      >
-        Delete Skill
-      </Button>
-      <Divider sx={{ borderColor: "text.primary" }} />
-      <Button
-        variant="contained"
-        fullWidth
-        onClick={() => navigate("create-about")}
-        sx={{ maxWidth: { xs: "100%", sm: 220 } }}
-      >
-        Create About
-      </Button>
-      <Button
-        variant="contained"
-        fullWidth
-        onClick={() => navigate("update-about")}
-        sx={{ maxWidth: { xs: "100%", sm: 220 } }}
-      >
-        Update About
-      </Button>
-      <Button
-        variant="contained"
-        fullWidth
-        onClick={() => navigate("delete-about")}
-        sx={{ maxWidth: { xs: "100%", sm: 220 } }}
-      >
-        Delete About
-      </Button>
+        <Button
+          variant="contained"
+          color="success"
+          onClick={() => navigate("create-project")}
+          sx={{ flex: { xs: "1 1 100%", sm: "0 1 200px" } }}
+        >
+          New Project
+        </Button>
+        <Button
+          variant="contained"
+          color="error"
+          onClick={() => navigate("delete-project")}
+          sx={{ flex: { xs: "1 1 100%", sm: "0 1 200px" } }}
+        >
+          Delete Project
+        </Button>
+        <Button
+          variant="contained"
+          onClick={() => navigate("update-project")}
+          sx={{ flex: { xs: "1 1 100%", sm: "0 1 200px" } }}
+        >
+          Update Project
+        </Button>
+
+        <Divider sx={{ width: "100%", my: 1 }} />
+
+        <Button
+          variant="contained"
+          color="success"
+          onClick={() => navigate("create-home")}
+          sx={{ flex: { xs: "1 1 100%", sm: "0 1 200px" } }}
+        >
+          Create Home
+        </Button>
+        <Button
+          variant="contained"
+          color="success"
+          onClick={() => navigate("update-home")}
+          sx={{ flex: { xs: "1 1 100%", sm: "0 1 200px" } }}
+        >
+          Update Home
+        </Button>
+        <Button
+          variant="contained"
+          onClick={() => navigate("delete-home")}
+          sx={{ flex: { xs: "1 1 100%", sm: "0 1 200px" } }}
+        >
+          Delete Home
+        </Button>
+        <Button
+          variant="contained"
+          onClick={() => navigate("add-home-files")}
+          sx={{ flex: { xs: "1 1 100%", sm: "0 1 200px" } }}
+        >
+          Add Home Files
+        </Button>
+
+        <Divider sx={{ width: "100%", my: 1 }} />
+
+        <Button
+          variant="contained"
+          onClick={() => navigate("contacts")}
+          sx={{ flex: { xs: "1 1 100%", sm: "0 1 200px" } }}
+        >
+          Contacts
+        </Button>
+
+        <Divider sx={{ width: "100%", my: 1 }} />
+
+        <Button
+          variant="contained"
+          onClick={() => navigate("create-skill")}
+          sx={{ flex: { xs: "1 1 100%", sm: "0 1 200px" } }}
+        >
+          Create Skill
+        </Button>
+        <Button
+          variant="contained"
+          onClick={() => navigate("delete-skill")}
+          sx={{ flex: { xs: "1 1 100%", sm: "0 1 200px" } }}
+        >
+          Delete Skill
+        </Button>
+
+        <Divider sx={{ width: "100%", my: 1 }} />
+
+        <Button
+          variant="contained"
+          onClick={() => navigate("create-about")}
+          sx={{ flex: { xs: "1 1 100%", sm: "0 1 200px" } }}
+        >
+          Create About
+        </Button>
+        <Button
+          variant="contained"
+          onClick={() => navigate("update-about")}
+          sx={{ flex: { xs: "1 1 100%", sm: "0 1 200px" } }}
+        >
+          Update About
+        </Button>
+        <Button
+          variant="contained"
+          onClick={() => navigate("delete-about")}
+          sx={{ flex: { xs: "1 1 100%", sm: "0 1 200px" } }}
+        >
+          Delete About
+        </Button>
+      </Box>
     </Box>
   );
 }
